@@ -20,11 +20,13 @@ class Spree::BlogEntriesController < Spree::StoreController
   def tag
     @blog_entries = Spree::BlogEntry.visible.by_tag(params[:tag]).page(@pagination_page).per(@pagination_per_page)
     @tag_name = params[:tag]
+    render 'index'    
   end
 
   def category
     @blog_entries = Spree::BlogEntry.visible.by_category(params[:category]).page(@pagination_page).per(@pagination_per_page)
     @category_name = params[:category]
+    render 'index'    
   end
 
   def archive
