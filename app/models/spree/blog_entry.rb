@@ -51,6 +51,14 @@ class Spree::BlogEntry < ActiveRecord::Base
     where(:author_id => author)
   end
 
+  def next
+    self.class.where("id > ?", id).order("id ASC").first
+  end
+
+  def prev
+    self.class.where("id < ?", id).order("id DESC").first
+  end
+
   # data for news archive widget, only visible entries
   def self.organize_blog_entries
     Hash.new.tap do |entries|
