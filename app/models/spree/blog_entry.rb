@@ -52,11 +52,11 @@ class Spree::BlogEntry < ActiveRecord::Base
   end
 
   def next
-    self.class.where("id > ?", id).order("id ASC").first
+    self.class.visible.where("id > ?", id).order("id ASC").first
   end
 
   def prev
-    self.class.where("id < ?", id).order("id DESC").first
+    self.class.visible.where("id < ?", id).order("id DESC").first
   end
 
   # data for news archive widget, only visible entries
